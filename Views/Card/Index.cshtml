@@ -1,0 +1,38 @@
+﻿@model CardIndexViewModel
+
+<div class="container main">
+    <div class="row pt-1">
+        <table class="table table-bordered table-hover table-striped" id="myTable">
+            <thead>
+                <tr>
+                    <th>Card</th>
+                    <th>Card Name</th>
+                    <th>Set</th>
+                    <th>Card Number</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var card in Model.results.data)
+                {
+                    <tr>
+                        <td>
+                            <img src="@card.images.small" alt="@card.name" />
+                        </td>
+                        <td>@card.name</td>
+                        <td>@card.set.name</td>
+                        <td>@card.number</td>
+                        @if (card.cardmarket != null)
+                        {
+                            <td>$@card.cardmarket.prices.averageSellPrice.Value</td>
+                        }
+                        else
+                        {
+                            <td>Not available</td>
+                        }
+                    </tr>
+                }
+
+        </table>
+    </div>
+</div>
